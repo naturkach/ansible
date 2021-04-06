@@ -1,0 +1,36 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: hostname
+      command: hostname
+      register: result
+
+    - debug: msg="{{result.stdout}}"
+
+    - name: disk
+      command: df -h
+      register: result
+
+    - debug: msg="{{result.stdout}}"
+
+    - name: ram_capacity
+      command: free -h
+      register: result
+    - debug: msg="{{result.stdout}}"
+
+    - name: core_count
+      command: nproc
+      register: result
+    - debug: msg="{{result.stdout}}"
+
+    - name: LA
+      command: w | grep load
+      register: result
+
+    - debug: msg="{{result.stdout}}"
+
+    - name: update
+      command: yum update -y
+      register: result
+
+    - debug: msg="{{result.stdout}}"
