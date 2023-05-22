@@ -14,4 +14,13 @@ inventory         = ./hosts.txt
   
 run only need task:
   - <b>ansible-playbook first.yml --tags "install_stress"</b>
-
+  
+show additional info of tasks execution:
+  - add -v option: ansible-playbook first.yml --tags "please_ping" -v
+  
+<code>
+---
+  - name: "run on all servers one by one"
+    hosts: myserverslist
+    serial: 1   // - this is how to do this
+  </code>
