@@ -12,11 +12,31 @@ host_key_checking = false
 inventory         = ./hosts.txt
   </code>
   
-run only need task:
-  - <b>ansible-playbook first.yml --tags "install_stress"</b>
+  
+tags:
+<br> <b>run only need task:   </b>ansible-playbook first.yml --tags "install_stress"
+<br> <b>list tags:</b> ansible-playbook test.yml --list-tags
+<br> <b>skip tags:</b> ansible-playbook test.yml --skip-tags tag_in_playbook
+  
+  <br><b></b>
+<br><b>playbook start from task</b> ansible-playbook test.yml --start-at-task 'second task in play'
+<br><b>ask on each step</b> ansible-playbook test.yml --step 
+  
   
 show additional info of tasks execution:
   - add -v option: ansible-playbook first.yml --tags "please_ping" -v
+<code>
+---
+- hosts:localhost
+  
+  taks:
+    - name: get local info
+      debug:
+      var: hostvars[inventory_hostname]
+      verbosity: 1
+  </code>
+  
+  
   
 <code>
 ---
