@@ -1,4 +1,5 @@
 # ansible
+idempotent - if run once - will not do the same again 
 
 hostfile:
 <code>
